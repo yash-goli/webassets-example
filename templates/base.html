@@ -1,0 +1,29 @@
+{% load static assets %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<!-- Extra CSS -->
+	{% assets filters='cssmin', output='gen/packed.%(version)s.css', 'css/base.css', 'css/style.css' %}
+		<link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+	{% endassets %}
+	<!-- Extra CSS END -->
+</head>
+<body>
+<!-- Header -->
+<!-- Header END -->
+<div class="wrapper full-mh">
+	<!-- Main Content -->
+	{% block content %}
+
+	{% endblock %}
+	<!-- Main Content END -->
+</div>
+
+<!-- Scripts -->
+{% assets filters='jsmin', output='gen/packed.%(version)s.js', 'js/main.js' %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
+<!-- Scripts END -->
+</body>
+</html>
